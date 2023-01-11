@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "type": "shop",
+      "name": "Bibek Ratna Sun chaadi Pasal",
+      "latitude": 27.629772,
+      "longitude": 85.525739
+    },
+    {
+      "id": 2,
+      "type": "bank",
+      "name": "Nabil Bank",
+      "latitude": 27.629064,
+      "longitude": 85.526788
+    },
+    {
+      "id": 3,
+      "type": "shop",
+      "name": " Jay Maa Chandeshwori Kirana store",
+      "latitude": 27.628890,
+      "longitude": 85.526021
+    },
+    {
+      "id": 4,
+      "type": "bank",
+      "name": "Prime Commercial Bank Limited",
+      "latitude": 27.629547,
+      "longitude": 85.526789
+    },
+    {
+      "id": 5,
+      "type": "gym",
+      "name": "Prime Commercial Bank Limited",
+      "latitude": 27.630122,
+      "longitude": 85.522950
+    }
+  ]
+}

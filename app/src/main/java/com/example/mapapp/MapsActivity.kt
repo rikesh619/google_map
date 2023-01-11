@@ -12,9 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.scale
-import com.example.mapapp.dataprovider.MapDataProvider
 import com.example.mapapp.model.MapData
-import com.example.mapapp.model.loadJSONFromAssets
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -22,12 +20,8 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import com.google.gson.Gson
-import com.google.gson.JsonArray
-import com.google.gson.reflect.TypeToken
 import org.json.JSONArray
-import org.json.JSONException
-import java.io.IOException
+import org.json.JSONObject
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -112,11 +106,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun CustomLocation() {
         mapDataModelList = ArrayList<MapData>()
-        val mapDataJsonArray = JSONArray(loadJSONFromAssets("Places.json"))
+        val jsonData = applicationContext.resources.openRawResource(
+            applicationContext.resources.getIdentifier(
+                "example",
+                "raw",
+                applicationContext.packageName
+            )
+        ).bufferedReader().use { it.readText() }
+        val mapDataJsonObject = JSONObject(jsonData)
+        val data = mapDataJsonObject.getJSONArray("data") as JSONArray
 
-        for (i in 0 until mapDataJsonArray.length()) {
+        for (i in 0 until data.length()) {
             val mapDataModel = MapData()
-            val mapDataJSONObject = mapDataJsonArray.getJSONObject(i)
+            val mapDataJSONObject = data.getJSONObject(i)
             mapDataModel.name = mapDataJSONObject.getString("name")
             mapDataModel.type = mapDataJSONObject.getString("type")
             mapDataModel.latitude = mapDataJSONObject.getDouble("latitude")

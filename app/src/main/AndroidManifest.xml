@@ -35,7 +35,7 @@
             android:value="AIzaSyBb8TgSChlkG8g_oO2h0-pU1tgFTW3Z9Fg" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name="com.example.mapapp.MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps">
             <intent-filter>
